@@ -1,0 +1,31 @@
+docker compose up --build -d
+
+docker compose run --rm webserver airflow db init
+
+docker compose run --rm webserver airflow users create \
+--username admin \
+--firstname admin \
+--lastname admin \
+--role Admin \
+--password admin \
+--email admin@example.com
+
+http://localhost:5000/api/customers
+http://localhost:5000/api/products
+http://localhost:5000/api/products/qwertyiukjhxvcbnm(id)
+http://localhost:5000/api/orders
+http://localhost:5000/api/orders/id
+http://localhost:5000/api/orders?order_date=2024-09-08
+
+
+ls ./data/order_analysis/
+
+sqlite3 ./data/api_database.db
+select (*) from final_data;
+
+docker compose run --rm webserver airflow \ 
+dags backfill order_analysis_dag \
+-s 2024-05-30
+-e 2024-06-27
+
+
