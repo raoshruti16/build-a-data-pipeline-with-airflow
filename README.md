@@ -1,4 +1,4 @@
-# Airflow demo course
+
 
 ## 1. Development environment (optional)
 
